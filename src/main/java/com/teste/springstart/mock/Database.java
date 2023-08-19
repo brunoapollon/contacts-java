@@ -8,13 +8,13 @@ public class Database {
   public ArrayList<ContactEntity> contacts;
   private static Database database;
 
-  private Database(){
+  private Database() {
     this.contacts = new ArrayList<ContactEntity>();
   }
 
-  public static Database getInstance(){
-    if(database == null)
-    database = new Database();
+  public static Database getInstance() {
+    if (database == null)
+      database = new Database();
 
     return database;
   }
