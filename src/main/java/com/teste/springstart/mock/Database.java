@@ -30,4 +30,8 @@ public class Database {
 
     return newContact;
   }
+
+  public ArrayList<ContactEntity> getAllContacts() {
+    return this.contacts;
+  }
 }
