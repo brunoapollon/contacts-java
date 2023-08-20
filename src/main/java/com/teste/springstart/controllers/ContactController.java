@@ -17,29 +17,30 @@ public class ContactController {
   @PostMapping(value = "contact")
   @ResponseBody
   public ContactEntity create(@RequestBody ContactEntity contact) {
-    return this.contactService.handleAddContact(contact);
+    return this.contactService.add(contact);
   }
 
   @GetMapping(value = "contact")
   @ResponseBody
   public ArrayList<ContactEntity> index() {
-    return this.contactService.handleGetAllContacts();
+    return this.contactService.getall();
   }
+
   @GetMapping(value = "contact/{id}")
   @ResponseBody
   public ContactEntity show(@PathVariable(name = "id") Integer id) {
-    return this.contactService.findOne((id));
+    return this.contactService.getOne((id));
   }
 
   @DeleteMapping(value = "contact/{id}")
   @ResponseBody
   public Boolean delete(@PathVariable(name = "id") Integer id) {
-    return this.contactService.removeContact(id);
+    return this.contactService.remove(id);
   }
 
   @PutMapping(value = "contact/{id}")
   @ResponseBody
   public ContactEntity update(@PathVariable(name = "id") Integer id, @RequestBody ContactEntity contact) {
-    return this.contactService.updateContact(id, contact);
+    return this.contactService.update(id, contact);
   }
 }
