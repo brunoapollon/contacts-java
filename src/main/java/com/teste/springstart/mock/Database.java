@@ -34,4 +34,19 @@ public class Database {
   public ArrayList<ContactEntity> getAllContacts() {
     return this.contacts;
   }
+
+  public ContactEntity findById(Integer id) {
+    ContactEntity contactFounded = null;
+    for (ContactEntity contact : this.contacts) {
+      if (contact.id == id) {
+        contactFounded = contact;
+      }
+    }
+
+    return contactFounded;
+  }
+
+  public Boolean delete(ContactEntity contact) {
+    return this.contacts.remove(contact);
+  }
 }

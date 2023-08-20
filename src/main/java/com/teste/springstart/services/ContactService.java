@@ -15,4 +15,20 @@ public class ContactService {
   public ArrayList<ContactEntity> handleGetAllContacts() {
     return this.db.getAllContacts();
   }
+
+  public ContactEntity findOne(Integer id) {
+    ContactEntity contactFounded =  this.db.findById(id);
+    if (contactFounded  == null)
+      throw new Error("Contact not found!");
+
+    return contactFounded;
+  }
+
+  public Boolean removeContact(Integer id) {
+    ContactEntity contactFounded =  this.db.findById(id);
+    if (contactFounded  == null)
+      throw new Error("Contact not found!");
+
+    return this.db.delete(contactFounded);
+  }
 }

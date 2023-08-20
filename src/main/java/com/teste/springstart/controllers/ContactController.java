@@ -1,6 +1,6 @@
 package com.teste.springstart.controllers;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.teste.springstart.entities.ContactEntity;
 import com.teste.springstart.services.ContactService;
 
@@ -15,12 +15,25 @@ public class ContactController {
   private ContactService contactService = new ContactService();
 
   @PostMapping(value = "contact")
-  public ContactEntity postMethodContact(@RequestBody ContactEntity contact) {
+  @ResponseBody
+  public ContactEntity create(@RequestBody ContactEntity contact) {
     return this.contactService.handleAddContact(contact);
   }
 
   @GetMapping(value = "contact")
-  public ArrayList<ContactEntity> getMethodListContacts() {
+  @ResponseBody
+  public ArrayList<ContactEntity> index() {
     return this.contactService.handleGetAllContacts();
+  }
+  @GetMapping(value = "contact/{id}")
+  @ResponseBody
+  public ContactEntity show(@PathVariable(name = "id") Integer id) {
+    return this.contactService.findOne((id));
+  }
+
+  @DeleteMapping(value = "contact/{id}")
+  @ResponseBody
+  public Boolean delete(@PathVariable(name = "id") Integer id) {
+    return this.contactService.removeContact(id);
   }
 }
