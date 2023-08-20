@@ -49,4 +49,9 @@ public class Database {
   public Boolean delete(ContactEntity contact) {
     return this.contacts.remove(contact);
   }
+
+  public ContactEntity update(ContactEntity contact) {
+    this.contacts.set(contact.id, contact);
+    return contact;
+  }
 }

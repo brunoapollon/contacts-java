@@ -36,4 +36,10 @@ public class ContactController {
   public Boolean delete(@PathVariable(name = "id") Integer id) {
     return this.contactService.removeContact(id);
   }
+
+  @PutMapping(value = "contact/{id}")
+  @ResponseBody
+  public ContactEntity update(@PathVariable(name = "id") Integer id, @RequestBody ContactEntity contact) {
+    return this.contactService.updateContact(id, contact);
+  }
 }

@@ -31,4 +31,16 @@ public class ContactService {
 
     return this.db.delete(contactFounded);
   }
+  
+  public ContactEntity updateContact(Integer id, ContactEntity contact) {
+    ContactEntity contactFounded =  this.db.findById(id);
+    if (contactFounded  == null)
+      throw new Error("Contact not found!");
+
+    contact.id = id;
+
+    return this.db.update(contact);
+  }
+
+
 }
