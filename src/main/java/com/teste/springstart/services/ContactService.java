@@ -25,18 +25,13 @@ public class ContactService {
   }
 
   public Boolean remove(Integer id) {
-    ContactEntity contactFounded = this.db.findContactById(id);
-    if (contactFounded == null)
-      throw new Error("Contact not found!");
+    ContactEntity contactFounded = this.getOne(id);
 
     return this.db.deleteContact(contactFounded);
   }
 
   public ContactEntity update(Integer id, ContactEntity contact) {
-    ContactEntity contactFounded = this.db.findContactById(id);
-    if (contactFounded == null)
-      throw new Error("Contact not found!");
-
+    this.getOne(id);
     contact.id = id;
 
     return this.db.updateContact(contact);
