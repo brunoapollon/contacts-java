@@ -9,15 +9,15 @@ public class ContactService {
   private Database db = Database.getInstance();
 
   public ContactEntity add(ContactEntity contact) {
-    return this.db.save(contact);
+    return this.db.saveContact(contact);
   }
 
   public ArrayList<ContactEntity> getall() {
-    return this.db.getAllContacts();
+    return this.db.getContacts();
   }
 
   public ContactEntity getOne(Integer id) {
-    ContactEntity contactFounded = this.db.findById(id);
+    ContactEntity contactFounded = this.db.findContactById(id);
     if (contactFounded == null)
       throw new Error("Contact not found!");
 
@@ -25,21 +25,21 @@ public class ContactService {
   }
 
   public Boolean remove(Integer id) {
-    ContactEntity contactFounded = this.db.findById(id);
+    ContactEntity contactFounded = this.db.findContactById(id);
     if (contactFounded == null)
       throw new Error("Contact not found!");
 
-    return this.db.delete(contactFounded);
+    return this.db.deleteContact(contactFounded);
   }
 
   public ContactEntity update(Integer id, ContactEntity contact) {
-    ContactEntity contactFounded = this.db.findById(id);
+    ContactEntity contactFounded = this.db.findContactById(id);
     if (contactFounded == null)
       throw new Error("Contact not found!");
 
     contact.id = id;
 
-    return this.db.update(contact);
+    return this.db.updateContact(contact);
   }
 
 }
