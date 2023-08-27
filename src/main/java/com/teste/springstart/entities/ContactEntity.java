@@ -4,12 +4,12 @@ public class ContactEntity {
   public Integer id;
   public String name;
   public String phone;
-  public String category;
+  public Integer categoryId;
 
-  public ContactEntity(String name, String phone, String category) {
+  public ContactEntity(String name, String phone, Integer categoryId) {
     this.name = name;
     this.phone = phone;
-    this.category = category;
+    this.categoryId = categoryId;
   }
 
   public void setId(Integer id) {
@@ -20,8 +20,8 @@ public class ContactEntity {
     return id;
   }
 
-  public String getCategory() {
-    return category;
+  public Integer getCategoryId() {
+    return categoryId;
   }
 
   public String getName() {
@@ -32,8 +32,8 @@ public class ContactEntity {
     return phone;
   }
 
-  public void setCategory(String category) {
-    this.category = category;
+  public void setCategoryId(Integer categoryId) {
+    this.categoryId = categoryId;
   }
 
   public void setName(String name) {
